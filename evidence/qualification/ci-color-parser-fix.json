@@ -1,0 +1,28 @@
+{
+  "parent_correction": "c02db34ae8a7e91ca7ab8faee18fe41515626940",
+  "status": "qualification parser maintenance only; CI retry required",
+  "failure_run": 44854456266,
+  "failure_log_sha256": "0bf4c1aed73d84661fe27738e2243ada2b7137b981719b2969113a2889099add",
+  "source_payload_unchanged": [
+    "src/local/rows.rs",
+    "src/local/impls.rs",
+    "src/local/statement.rs",
+    "src/statement.rs",
+    "Cargo.toml",
+    "Cargo.lock"
+  ],
+  "changed_sha256": {
+    "scripts/fresh-coverage.py": "871e68c85b65bdc45638e751af31b2005fedb4786fed8ef9879554ce8d2a6346",
+    "scripts/compare-baseline-lint.py": "9742719f0c41525b6b7be762a3dfa8b12c99afca9322ab4367983ea5b3d71d3d",
+    "tests/test_fresh_coverage.py": "91e2662438de41fb5357e8fb18d8138457be34bad925eafa5a6a05e92aef4cdb",
+    "tests/test_baseline_lint.py": "e517d2186359e0992dd1956be449ff07769d328e55b292f715e0547bdfe424e5"
+  },
+  "validation": {
+    "source_check_pass": true,
+    "preservation_controls": 12,
+    "lint_controls": 14,
+    "fresh_profile_controls": 6,
+    "independent_sol_review": "no blocking findings; no gate weakening or binary identity drift"
+  },
+  "scope": "No Rust code, API, engine, package metadata, resolved dependency or Gossil pin change."
+}

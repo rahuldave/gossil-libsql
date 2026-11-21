@@ -120,6 +120,12 @@ class BaselineLintTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'operational'):
             LINT.validate_strict(self.strict('fatal error: tool failed'), [self.diagnostic(self.current)], self.current, self.originals)
 
+    def test_colored_nonlint_error(self):
+        """Color cannot hide an unrecognized error outside structured diagnostics."""
+        raw = self.strict('\x1b[31merror:\x1b[0m permission denied')
+        with self.assertRaisesRegex(ValueError, 'unrecognized strict error'):
+            LINT.validate_strict(raw, [self.diagnostic(self.current)], self.current, self.originals)
+
     def test_unexpected_exit_status(self):
         """Non-lint process exit codes never turn into admission success."""
         with self.assertRaisesRegex(ValueError, 'exit status'):

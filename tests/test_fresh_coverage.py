@@ -30,6 +30,11 @@ class FreshCoverageTests(unittest.TestCase):
         """Exactly one existing selected binary is accepted."""
         self.assertEqual(COVERAGE.executed_binary(self.line, self.label, self.target), self.binary)
 
+    def test_colored_running_label(self):
+        """Cargo's colored CI label preserves the exact selected binary identity."""
+        colored = f'\x1b[1m\x1b[92m     Running\x1b[0m {self.label} ({self.binary})\n'
+        self.assertEqual(COVERAGE.executed_binary(colored, self.label, self.target), self.binary)
+
     def test_duplicate_binary_identity(self):
         """Two matching lines cannot impersonate two different target executions."""
         with self.assertRaises(ValueError):

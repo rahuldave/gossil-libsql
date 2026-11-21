@@ -94,7 +94,8 @@ def validate_strict(result, ordinary, root, originals):
     require(result.returncode == expected, 'unexpected strict exit status')
     require(all(item['level'] == 'error' for item in raw), 'unexpected strict diagnostic severity')
     require(not re.search(r'internal compiler error|panicked|fatal error|signal:|no space|could not execute', result.stderr, re.I), 'strict run has an operational/compiler failure')
-    for line in result.stderr.splitlines():
+    plain = re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]', '', result.stderr)
+    for line in plain.splitlines():
         if line.startswith('error:'):
             require(line.startswith('error: could not compile `libsql`') and 'previous error' in line, 'unrecognized strict error outside diagnostics')
 
@@ -113,7 +114,7 @@ def run():
         # Only the explicit test harness and identical provider-source override are grafted.
         for name in ['Cargo.toml', 'Cargo.lock', 'tests/row_text_regression.rs']:
             (pristine / name).write_bytes((ROOT / name).read_bytes())
-        env = dict(os.environ, CARGO_TARGET_DIR=os.environ.get('CARGO_TARGET_DIR', str(ROOT / 'target')))
+        env = dict(os.environ, CARGO_TERM_COLOR='never', CARGO_TARGET_DIR=os.environ.get('CARGO_TARGET_DIR', str(ROOT / 'target')))
         ffi = str(Path(os.environ['GOSSIL_LIBSQL_FFI_PATH']).resolve())
         ordinary = {}
         strict = {}

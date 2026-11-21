@@ -13,7 +13,8 @@ import uuid
 def executed_binary(stderr, label, target):
     """Require exactly the selected executed binary in the coverage target tree."""
     paths = []
-    for line in stderr.splitlines():
+    plain = re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]', '', stderr)
+    for line in plain.splitlines():
         if f'Running {label} ' in line:
             match = re.search(r' \((.+)\)$', line)
             if match:
@@ -40,7 +41,7 @@ def run(arguments):
     for label, selection in [('unittests src/lib.rs', ['--lib']),
                              ('tests/row_text_regression.rs', ['--test', 'row_text_regression'])]:
         prefix = f'gossil-libsql-{uuid.uuid4().hex}'
-        env = dict(os.environ, LLVM_PROFILE_FILE_NAME=f'{prefix}-%p-%m.profraw')
+        env = dict(os.environ, CARGO_TERM_COLOR='never', LLVM_PROFILE_FILE_NAME=f'{prefix}-%p-%m.profraw')
         # --no-report implicitly preserves old build/profile inputs; no cleanup is requested.
         command = ['cargo', 'llvm-cov', 'test', '--no-report', *arguments, *selection]
         result = subprocess.run(command, env=env, text=True, capture_output=True)
