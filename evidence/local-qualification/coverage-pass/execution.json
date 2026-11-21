@@ -1,0 +1,34 @@
+{
+  "name": "companion-coverage-metadata",
+  "cwd": "/Users/rahul/Projects/gossil-libsql",
+  "argv": [
+    "just",
+    "coverage-check"
+  ],
+  "returncode": 0,
+  "stop": null,
+  "elapsed": 5.784965417115018,
+  "minimum_free_bytes": 7744741376,
+  "owned_pids": [
+    65445,
+    65506,
+    65512,
+    65531,
+    65573,
+    65574,
+    65584,
+    65585,
+    65587,
+    65591,
+    65661,
+    65667,
+    65668,
+    65700,
+    65706,
+    65742
+  ],
+  "owned_groups": [
+    65445
+  ],
+  "live_owned_pids": []
+}

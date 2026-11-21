@@ -1,0 +1,51 @@
+{
+  "status": "fresh successful per-target runs only; no profile or cache cleanup",
+  "groups": [
+    {
+      "label": "unittests src/lib.rs",
+      "command": [
+        "cargo",
+        "llvm-cov",
+        "test",
+        "--no-report",
+        "--config",
+        "patch.crates-io.libsql-ffi.path=\"/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi\"",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "core",
+        "--lib"
+      ],
+      "profile_prefix": "gossil-libsql-f5bd9eeafd284081aeb044b09b58ea0c",
+      "profiles": {
+        "/private/tmp/gossil-gest-feature-runtime-20261120/llvm-target/gossil-libsql-f5bd9eeafd284081aeb044b09b58ea0c-93512-10617157857850715023_0.profraw": "89fd3fd9bda1f34cf1fe4dbb9104b6805a96b567292e744e68b3395c57996538"
+      },
+      "binary": "/private/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libsql-915a62b2bf5a6d1f",
+      "binary_sha256": "0373cd6a066eaed20d64d68ff3a4543ee058376e58c92854f4a1972d9060a94f"
+    },
+    {
+      "label": "tests/row_text_regression.rs",
+      "command": [
+        "cargo",
+        "llvm-cov",
+        "test",
+        "--no-report",
+        "--config",
+        "patch.crates-io.libsql-ffi.path=\"/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi\"",
+        "--locked",
+        "--no-default-features",
+        "--features",
+        "core",
+        "--test",
+        "row_text_regression"
+      ],
+      "profile_prefix": "gossil-libsql-5b69184fe8ce42d7968e32c98b95d543",
+      "profiles": {
+        "/private/tmp/gossil-gest-feature-runtime-20261120/llvm-target/gossil-libsql-5b69184fe8ce42d7968e32c98b95d543-93583-7412808481110474314_0.profraw": "74e1596c5c1f6954fdec3d35db265b3bfc899eeeebfb9d11e1e21980831af34d"
+      },
+      "binary": "/private/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/row_text_regression-c9f61bcda2309a21",
+      "binary_sha256": "86f0f5799e013883f2ba2177bca5f2ae1d14bd14594e272a907d5266a4b82f99"
+    }
+  ],
+  "report_sha256": "5ec3a5eaed5edc33f7d26f0914ace9a88f512bda54f7f3c9a453cd867babc731"
+}

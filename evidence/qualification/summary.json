@@ -1,0 +1,46 @@
+{
+  "status": "qualified upstream core correction; raw strict failures retained under explicit unchanged-origin lint contract",
+  "baseline": "243281163e4a39303322385d5f9537736277026e",
+  "full_check_guard": "f2e7fcf6-1023-4309-934f-522e2191f583",
+  "lint_1100_guard": "52014a09-bf12-4652-a3db-9c4235ed2687",
+  "unit_passed": 4,
+  "public_passed": 5,
+  "reported_changed_lines": 188,
+  "reported_changed_lines_hit": 188,
+  "mandatory_executable_lines": 32,
+  "lint_baseline_diagnostics": 38,
+  "lint_current_diagnostics": 34,
+  "lint_new_diagnostics": 0,
+  "raw_strict_exit_status": 101,
+  "maintenance_controls": {
+    "preservation": 12,
+    "lint": 13,
+    "fresh_profile": 5
+  },
+  "fresh_report_sha256": "5ec3a5eaed5edc33f7d26f0914ace9a88f512bda54f7f3c9a453cd867babc731",
+  "source_sha256": {
+    "src/local/rows.rs": "bfb6588418953535d223e12c16c57191675bf94d3ce6694a62ecd17fd2723662",
+    "src/local/impls.rs": "1a951df423566d8a03a0dfc380392f094b82a5c0ac5d4d3eba079841a755e280",
+    "src/local/statement.rs": "0910b61aa941dc6cdcf3287a907e98a305d7e31a9dd16f0a36bef793695f82f0",
+    "src/statement.rs": "093234e94072e9d39a24e6af138e14240a58d87bf79d4774766bbbebd6aca54c",
+    "tests/row_text_regression.rs": "9a3a40ec52d394bd7243623e74c472658df88a7c5de3418e27c5797a93686d87",
+    "scripts/verify-source.py": "3ae477a0af7b27da9e8666eadcfda8cb6b24cfed418c31134e2b3c90fc0b7b93",
+    "scripts/compare-baseline-lint.py": "3d83c755630a0f773cd1e88aa504f0238a456b0835dc8031ec255c5c7ecbba86",
+    "scripts/fresh-coverage.py": "5ebdfdbf36d665f374cfe718c44e818b3331127646e15467baa4a5668c9ebe53",
+    "tests/test_source_verifier.py": "2788002067935b0655bd274e64740a2459a39c9f0ba6879f542c87bacb50d2d0",
+    "tests/test_baseline_lint.py": "3274481bb645e07a31153640f2877d10d699da87ca4d9922d6fa2fdf983497cd",
+    "tests/test_fresh_coverage.py": "86d4e5443effbf5e76acde22086772b2700bc1f32fed47c61c06cab54ed14b43",
+    "evidence/coverage-contract.json": "4ce6e1fa04d7ad29165b86941418fc5c7bd52b7ed21421dd781eff7bf1551de5",
+    "Justfile": "01e4ff3d09b9255812834d1ebe7148abd36db777a5180edb81699a8585e66037",
+    ".github/workflows/check.yml": "8094d5771de5e6d7a45a61d6ef7b1da3e78a7377aa37406720088b6462368ced",
+    "AGENTS.md": "a785005274d11020958bc8785603dc9ba0229a2e0661907d3a119d3a3a770c8b",
+    "README.md": "075909d5d3e005d71b27d8e7671b342e234bff6f16fca8566d407b7b54f77157",
+    "ROW-CORRECTION.md": "bba83b9b0e8c21061121a603223d441465677e8b8de494de4988521600694919"
+  },
+  "independent_review": {
+    "model": "gpt-6.1-sol",
+    "source_tests_policy": "no blocking findings; lexer limitations fail closed with negative controls",
+    "prose": "three pages independently checked/linted; original README prefix preserved"
+  },
+  "limits": "Core configuration with exact existing Gossil provider; no broader libsql feature/platform or Gossil integration/release claim."
+}

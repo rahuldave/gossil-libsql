@@ -1,0 +1,34 @@
+
+running 4 tests
+test params::tests::test_serialize_array ... ok
+test local::rows::row_index_regression::local_generic_get_checks_bounds_before_value_access ... ok
+test local::connection::tests::test_reserved_bytes ... ok
+test local::connection::tests::test_kek ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.30s
+
+
+running 5 tests
+test public_row_and_rows_reject_out_of_range_indices_and_recover ... ok
+test public_row_keeps_storage_types_and_rejects_nontext_strings ... ok
+test public_statement_columns_keep_borrowed_metadata ... ok
+test public_row_preserves_all_text_bytes_and_owned_lifetime ... ok
+test public_row_rejects_invalid_utf8_without_panic_and_recovers ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+-------------
+Diff Coverage
+Diff: 243281163e4a39303322385d5f9537736277026e...HEAD, staged and unstaged changes
+-------------
+src/local/impls.rs (100%)
+src/local/rows.rs (100%)
+src/local/statement.rs (100%)
+src/statement.rs (100%)
+-------------
+Total:   57 lines
+Missing: 0 lines
+Coverage: 100%
+-------------
+
+Verified all 72 baseline files and the bounded production correction.

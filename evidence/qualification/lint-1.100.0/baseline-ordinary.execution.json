@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "cargo",
+    "clippy",
+    "--manifest-path",
+    "/private/var/folders/wq/mr3zj9r14dzgjnq9rjx_vqbc0000gn/T/gossil-libsql-lint-jcmqf167/Cargo.toml",
+    "--config",
+    "patch.crates-io.libsql-ffi.path=\"/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi\"",
+    "--locked",
+    "--no-default-features",
+    "--features",
+    "core",
+    "--lib",
+    "--test",
+    "row_text_regression",
+    "--message-format=json"
+  ],
+  "returncode": 0
+}

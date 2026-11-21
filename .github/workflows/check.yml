@@ -1,0 +1,55 @@
+name: Core wrapper correction
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    env:
+      CARGO_BUILD_JOBS: '1'
+      CARGO_INCREMENTAL: '0'
+      GOSSIL_LIBSQL_FFI_PATH: ${{ github.workspace }}/.qualification/gossil/vendor/libsql-ffi
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: rahuldave/gossil
+          ref: 8e9a680b206244cc0eee2de3534c2fde140da4e5
+          path: .qualification/gossil
+      - uses: dtolnay/rust-toolchain@1.95.0
+        with:
+          components: clippy,rustfmt,llvm-tools-preview
+      - uses: astral-sh/setup-uv@v6
+      - uses: extractions/setup-just@v3
+      - name: Install pinned coverage and logging tools
+        run: |
+          cargo install --locked cargo-llvm-cov --version 0.9.1
+          cargo install --locked --git https://github.com/rahuldave/jlog --rev 8febdf18387974f38047abbe88b7473bc5f27bb9 jlog
+      - name: Acquire locked inputs
+        run: just setup
+      - name: Qualify authored core correction
+        env:
+          CARGO_NET_OFFLINE: 'true'
+        run: just check
+      - uses: dtolnay/rust-toolchain@1.100.0
+        with:
+          components: clippy
+      - name: Compare exact newer toolchain against the upstream baseline
+        env:
+          CARGO_NET_OFFLINE: 'true'
+          RUSTUP_TOOLCHAIN: 1.100.0
+        run: just lint
+      - name: Retain raw lint and coverage evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-qualification
+          path: |
+            target/lint-comparison/
+            target/fresh-coverage/
+            target/row-fix.lcov

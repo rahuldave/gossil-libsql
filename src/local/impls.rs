@@ -160,7 +160,7 @@ impl Stmt for LibsqlStmt {
         self.0.column_count()
     }
 
-    fn columns(&self) -> Vec<Column> {
+    fn columns(&self) -> Vec<Column<'_>> {
         self.0.columns()
     }
 }
@@ -215,7 +215,12 @@ impl RowInner for LibsqlRow {
     }
 
     fn column_str(&self, idx: i32) -> Result<&str> {
-        self.0.get::<&str>(idx)
+        match self.0.get_ref(idx)? {
+            crate::ValueRef::Text(bytes) => {
+                std::str::from_utf8(bytes).map_err(|_| crate::Error::InvalidColumnType)
+            }
+            _ => Err(crate::Error::InvalidColumnType),
+        }
     }
 }
 
