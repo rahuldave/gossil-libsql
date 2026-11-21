@@ -1,0 +1,347 @@
+test -n '/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi'
+jlog run python3 scripts/verify-source.py --ffi-root '/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi'
+jlog run python3 scripts/verify-source.py
+jlog run python3 -m unittest discover -s tests -p test_source_verifier.py
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 6.570s
+
+OK
+jlog run rustfmt --edition 2021 --check src/local/rows.rs src/local/impls.rs src/local/statement.rs src/statement.rs tests/row_text_regression.rs
+jlog run cargo clippy --config 'patch.crates-io.libsql-ffi.path="/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi"' --locked --no-default-features --features core --lib --test row_text_regression -- -D warnings
+    Checking libsql v0.10.0 (/Users/rahul/Projects/gossil-libsql)
+error: doc list item without indentation
+  --> src/lib.rs:86:5
+   |
+86 | //! embedded replica features.
+   |     ^
+   |
+   = help: if this is supposed to be its own paragraph, add a blank line
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_lazy_continuation
+   = note: `-D clippy::doc-lazy-continuation` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::doc_lazy_continuation)]`
+help: indent this line
+   |
+86 | //!   embedded replica features.
+   |     ++
+
+error: doc list item without indentation
+  --> src/lib.rs:88:5
+   |
+88 | //! that will allow you to sync you remote database locally.
+   |     ^
+   |
+   = help: if this is supposed to be its own paragraph, add a blank line
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_lazy_continuation
+help: indent this line
+   |
+88 | //!   that will allow you to sync you remote database locally.
+   |     ++
+
+error: doc list item without indentation
+  --> src/lib.rs:90:5
+   |
+90 | //! a remote database.
+   |     ^
+   |
+   = help: if this is supposed to be its own paragraph, add a blank line
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_lazy_continuation
+help: indent this line
+   |
+90 | //!   a remote database.
+   |     ++
+
+error: doc list item without indentation
+  --> src/lib.rs:92:5
+   |
+92 | //! your own connector for any of the features that require HTTP.
+   |     ^
+   |
+   = help: if this is supposed to be its own paragraph, add a blank line
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_lazy_continuation
+help: indent this line
+   |
+92 | //!   your own connector for any of the features that require HTTP.
+   |     ++
+
+error: usage of an `Arc` that is not `Send` and `Sync`
+  --> src/local/connection.rs:78:25
+   |
+78 |             authorizer: Arc::new(RwLock::new(None)),
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `Arc<RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>>` is not `Send` and `Sync` as `RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>` is neither `Send` nor `Sync`
+   = help: if the `Arc` will not be used across threads replace it with an `Rc`
+   = help: otherwise make `RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>` `Send` and `Sync` or consider a wrapper type such as `Mutex`
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#arc_with_non_send_sync
+   = note: `-D clippy::arc-with-non-send-sync` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::arc_with_non_send_sync)]`
+
+error: usage of an `Arc` that is not `Send` and `Sync`
+   --> src/local/connection.rs:103:25
+    |
+103 |             authorizer: Arc::new(RwLock::new(None)),
+    |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `Arc<RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>>` is not `Send` and `Sync` as `RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>` is neither `Send` nor `Sync`
+    = help: if the `Arc` will not be used across threads replace it with an `Rc`
+    = help: otherwise make `RwLock<RawRwLock, Option<Arc<dyn Fn(&AuthContext<'b>) -> Authorization>>>` `Send` and `Sync` or consider a wrapper type such as `Mutex`
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#arc_with_non_send_sync
+
+error: useless use of `format!`
+   --> src/local/connection.rs:456:49
+    |
+456 |                   return Err(crate::Error::Misuse(format!(
+    |  _________________________________________________^
+457 | |                     "dylib path is not a valid utf8 string"
+458 | |                 )))
+    | |_________________^ help: consider using `.to_string()`: `"dylib path is not a valid utf8 string".to_string()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#useless_format
+    = note: `-D clippy::useless-format` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::useless_format)]`
+
+error: useless use of `format!`
+   --> src/local/connection.rs:611:17
+    |
+611 |                 format!("wal_disable_checkpoint failed"),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using `.to_string()`: `"wal_disable_checkpoint failed".to_string()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#useless_format
+
+error: useless use of `format!`
+   --> src/local/connection.rs:621:17
+    |
+621 |                 format!("wal_insert_begin failed"),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using `.to_string()`: `"wal_insert_begin failed".to_string()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#useless_format
+
+error: useless use of `format!`
+   --> src/local/connection.rs:632:17
+    |
+632 |                 format!("wal_insert_end failed"),
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: consider using `.to_string()`: `"wal_insert_end failed".to_string()`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#useless_format
+
+error: manually constructing a nul-terminated string
+   --> src/local/connection.rs:675:17
+    |
+675 |                 "main\0".as_ptr() as *const _,
+    |                 ^^^^^^^^ help: use a `c""` literal: `c"main"`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#manual_c_str_literals
+    = note: `-D clippy::manual-c-str-literals` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::manual_c_str_literals)]`
+
+error: used `unwrap()` on `Err` value
+   --> src/local/connection.rs:782:17
+    |
+782 |                 Err(err).unwrap()
+    |                 ^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#unnecessary_literal_unwrap
+    = note: `-D clippy::unnecessary-literal-unwrap` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::unnecessary_literal_unwrap)]`
+help: remove the `Err` and `unwrap()`
+    |
+782 -                 Err(err).unwrap()
+782 +                 panic!("{:?}", err)
+    |
+
+error: using `clone` on type `ValueType` which implements the `Copy` trait
+   --> src/local/rows.rs:260:28
+    |
+260 |             .map(|(_, vt)| vt.clone())
+    |                            ^^^^^^^^^^ help: try dereferencing it: `*vt`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#clone_on_copy
+    = note: `-D clippy::clone-on-copy` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::clone_on_copy)]`
+
+error: using `clone` on type `ValueType` which implements the `Copy` trait
+   --> src/local/rows.rs:303:28
+    |
+303 |             .map(|(_, vt)| vt.clone())
+    |                            ^^^^^^^^^^ help: try dereferencing it: `*vt`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#clone_on_copy
+
+error: casting to the same type is unnecessary (`usize` -> `usize`)
+   --> src/local/statement.rs:331:27
+    |
+331 |                 return Ok(i as usize);
+    |                           ^^^^^^^^^^ help: try: `i`
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#unnecessary_cast
+    = note: `-D clippy::unnecessary-cast` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::unnecessary_cast)]`
+
+error: passing a unit value to a function
+   --> src/local/impls.rs:104:9
+    |
+104 |         Ok(self.conn.add_update_hook(cb))
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#unit_arg
+    = note: `-D clippy::unit-arg` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::unit_arg)]`
+help: move the expression in front of the call and replace it with the unit literal `()`
+    |
+104 ~         self.conn.add_update_hook(cb);
+105 +         Ok(())
+    |
+
+error: doc list item overindented
+  --> src/params.rs:29:5
+   |
+29 | ///     by doing `(1, "foo")`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+   = note: `-D clippy::doc-overindented-list-items` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::doc_overindented_list_items)]`
+
+error: doc list item overindented
+  --> src/params.rs:31:5
+   |
+31 | ///     by doing `libsql::params![1, "foo"]`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/params.rs:33:5
+   |
+33 | ///     supported by doing `[1, 2, 3]`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/params.rs:64:5
+   |
+64 | ///     by doing `(("key1", 1), ("key2", "foo"))`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/params.rs:66:5
+   |
+66 | ///     by doing `libsql::named_params!["key1": 1, "key2": "foo"]`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/params.rs:68:5
+   |
+68 | ///     supported by doing `[("key1", 1), ("key2, 2), ("key3", 3)]`.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: very complex type used. Consider factoring parts into `type` definitions
+  --> src/connection.rs:71:36
+   |
+71 |     fn add_update_hook(&self, _cb: Box<dyn Fn(Op, &str, &str, i64) + Send + Sync>) -> Result<()> {
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#type_complexity
+   = note: `-D clippy::type-complexity` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::type_complexity)]`
+
+error: doc list item overindented
+  --> src/database/builder.rs:15:5
+   |
+15 | ///     it does no networking and does not connect to any remote database.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/database/builder.rs:17:5
+   |
+17 | ///     to sync from the remote url and delegate writes to the remote primary.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/database/builder.rs:19:5
+   |
+19 | ///     synced to a remote server.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/database/builder.rs:21:5
+   |
+21 | ///     except you must use `Database::sync_frames` to sync with the remote. This version also
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/database/builder.rs:22:5
+   |
+22 | ///     includes the ability to delegate writes to a remote primary.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+  --> src/database/builder.rs:24:5
+   |
+24 | ///     instead run all queries on the remote database. This is essentially the pure HTTP api.
+   |     ^^^^ help: try using `  ` (2 spaces)
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: unsafe function's docs are missing a `# Safety` section
+   --> src/database/builder.rs:190:9
+    |
+190 |         pub unsafe fn skip_safety_assert(mut self, skip: bool) -> Builder<Local> {
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#missing_safety_doc
+    = note: `-D clippy::missing-safety-doc` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::missing_safety_doc)]`
+
+error: doc list item overindented
+   --> src/database.rs:563:9
+    |
+563 |     ///     libsql C ffi and create a connection to the libsql database.
+    |         ^^^^ help: try using `  ` (2 spaces)
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+   --> src/database.rs:565:9
+    |
+565 |     ///     lazily create a HTTP connection to the provided endpoint.
+    |         ^^^^ help: try using `  ` (2 spaces)
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+   --> src/database.rs:567:9
+    |
+567 |     ///     handshake with the remote server and will attempt to replicate the remote database
+    |         ^^^^ help: try using `  ` (2 spaces)
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: doc list item overindented
+   --> src/database.rs:568:9
+    |
+568 |     ///     locally.
+    |         ^^^^ help: try using `  ` (2 spaces)
+    |
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.95.0/index.html#doc_overindented_list_items
+
+error: could not compile `libsql` (lib) due to 34 previous errors
+error: Recipe `lint` failed on line 39 with exit code 101

@@ -1,0 +1,40 @@
+{
+  "name": "companion-warm-check",
+  "cwd": "/Users/rahul/Projects/gossil-libsql",
+  "argv": [
+    "just",
+    "check"
+  ],
+  "returncode": 101,
+  "stop": null,
+  "elapsed": 11.1232940829359,
+  "minimum_free_bytes": 7773655040,
+  "owned_pids": [
+    63571,
+    63633,
+    63639,
+    63677,
+    63791,
+    63797,
+    63809,
+    63913,
+    63919,
+    63969,
+    64021,
+    64173,
+    64294,
+    64382,
+    64411,
+    64579,
+    64606,
+    64675,
+    64742,
+    64748,
+    64749,
+    64754
+  ],
+  "owned_groups": [
+    63571
+  ],
+  "live_owned_pids": []
+}

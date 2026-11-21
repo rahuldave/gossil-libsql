@@ -1,0 +1,318 @@
+{
+  "baseline": "243281163e4a39303322385d5f9537736277026e",
+  "scope": "Every added production line is classified. Every executable line must have a positive LCOV DA count; tests are exercised by the test harness. Blank/comment/declaration/delimiter lines have no runtime action.",
+  "files": {
+    "src/local/rows.rs": {
+      "sha256": "bfb6588418953535d223e12c16c57191675bf94d3ce6694a62ecd17fd2723662",
+      "added_lines": {
+        "63": {
+          "kind": "executable",
+          "source": "        if idx < 0 || idx >= self.stmt.inner.column_count() {"
+        },
+        "64": {
+          "kind": "executable",
+          "source": "            return None;"
+        },
+        "65": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "70": {
+          "kind": "executable",
+          "source": "        if idx < 0 || idx >= self.stmt.inner.column_count() {"
+        },
+        "71": {
+          "kind": "executable",
+          "source": "            return Err(Error::InvalidColumnIndex);"
+        },
+        "72": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "131": {
+          "kind": "executable",
+          "source": "        self.check_column_index(idx)?;"
+        },
+        "137": {
+          "kind": "comment",
+          "source": "        // Copy the length-aware view before another SQLite operation can change it."
+        },
+        "138": {
+          "kind": "executable",
+          "source": "        match self.get_ref(idx)? {"
+        },
+        "139": {
+          "kind": "executable",
+          "source": "            ValueRef::Null => Ok(Value::Null),"
+        },
+        "140": {
+          "kind": "executable",
+          "source": "            ValueRef::Integer(n) => Ok(Value::Integer(n)),"
+        },
+        "141": {
+          "kind": "executable",
+          "source": "            ValueRef::Real(n) => Ok(Value::Real(n)),"
+        },
+        "142": {
+          "kind": "executable",
+          "source": "            ValueRef::Text(bytes) => std::str::from_utf8(bytes)"
+        },
+        "143": {
+          "kind": "executable",
+          "source": "                .map(|text| Value::Text(text.to_owned()))"
+        },
+        "144": {
+          "kind": "executable",
+          "source": "                .map_err(|_| Error::InvalidColumnType),"
+        },
+        "145": {
+          "kind": "executable",
+          "source": "            ValueRef::Blob(bytes) => Ok(Value::Blob(bytes.to_vec())),"
+        },
+        "146": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "150": {
+          "kind": "executable",
+          "source": "        if idx < 0 || idx >= self.stmt.inner.column_count() {"
+        },
+        "151": {
+          "kind": "executable",
+          "source": "            return Err(Error::InvalidColumnIndex);"
+        },
+        "152": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "165": {
+          "kind": "executable",
+          "source": "        if idx < 0 || idx >= self.stmt.inner.column_count() {"
+        },
+        "166": {
+          "kind": "executable",
+          "source": "            return None;"
+        },
+        "167": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "171": {
+          "kind": "declaration",
+          "source": "    fn check_column_index(&self, idx: i32) -> Result<()> {"
+        },
+        "172": {
+          "kind": "executable",
+          "source": "        if idx < 0 || idx >= self.stmt.inner.column_count() {"
+        },
+        "173": {
+          "kind": "executable",
+          "source": "            return Err(Error::InvalidColumnIndex);"
+        },
+        "174": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "175": {
+          "kind": "executable",
+          "source": "        Ok(())"
+        },
+        "176": {
+          "kind": "syntax",
+          "source": "    }"
+        },
+        "177": {
+          "kind": "blank",
+          "source": ""
+        },
+        "179": {
+          "kind": "executable",
+          "source": "        self.check_column_index(idx)?;"
+        },
+        "426": {
+          "kind": "test",
+          "source": "#[cfg(test)]"
+        },
+        "427": {
+          "kind": "test",
+          "source": "mod row_index_regression {"
+        },
+        "428": {
+          "kind": "test",
+          "source": "    use crate::{database::OpenFlags, local::Database, Error};"
+        },
+        "429": {
+          "kind": "test",
+          "source": ""
+        },
+        "430": {
+          "kind": "test",
+          "source": "    #[test]"
+        },
+        "431": {
+          "kind": "test",
+          "source": "    fn local_generic_get_checks_bounds_before_value_access() {"
+        },
+        "432": {
+          "kind": "test",
+          "source": "        let database = Database::open(\":memory:\", OpenFlags::default()).unwrap();"
+        },
+        "433": {
+          "kind": "test",
+          "source": "        let connection = database.connect().unwrap();"
+        },
+        "434": {
+          "kind": "test",
+          "source": "        let rows = connection"
+        },
+        "435": {
+          "kind": "test",
+          "source": "            .query(\"SELECT 7\", crate::params::Params::None)"
+        },
+        "436": {
+          "kind": "test",
+          "source": "            .unwrap()"
+        },
+        "437": {
+          "kind": "test",
+          "source": "            .unwrap();"
+        },
+        "438": {
+          "kind": "test",
+          "source": "        let row = rows.next().unwrap().unwrap();"
+        },
+        "439": {
+          "kind": "test",
+          "source": "        assert_eq!(row.get::<i64>(0).unwrap(), 7);"
+        },
+        "440": {
+          "kind": "test",
+          "source": "        assert_eq!(row.stmt.column_names(), vec![\"7\"]);"
+        },
+        "441": {
+          "kind": "test",
+          "source": "        for index in [-1, 1, i32::MAX] {"
+        },
+        "442": {
+          "kind": "test",
+          "source": "            assert!(matches!("
+        },
+        "443": {
+          "kind": "test",
+          "source": "                row.get::<i64>(index),"
+        },
+        "444": {
+          "kind": "test",
+          "source": "                Err(Error::InvalidColumnIndex)"
+        },
+        "445": {
+          "kind": "test",
+          "source": "            ));"
+        },
+        "446": {
+          "kind": "test",
+          "source": "        }"
+        },
+        "447": {
+          "kind": "test",
+          "source": "    }"
+        },
+        "448": {
+          "kind": "test",
+          "source": "}"
+        }
+      }
+    },
+    "src/local/impls.rs": {
+      "sha256": "1a951df423566d8a03a0dfc380392f094b82a5c0ac5d4d3eba079841a755e280",
+      "added_lines": {
+        "163": {
+          "kind": "declaration",
+          "source": "    fn columns(&self) -> Vec<Column<'_>> {"
+        },
+        "218": {
+          "kind": "executable",
+          "source": "        match self.0.get_ref(idx)? {"
+        },
+        "219": {
+          "kind": "executable",
+          "source": "            crate::ValueRef::Text(bytes) => {"
+        },
+        "220": {
+          "kind": "executable",
+          "source": "                std::str::from_utf8(bytes).map_err(|_| crate::Error::InvalidColumnType)"
+        },
+        "221": {
+          "kind": "syntax",
+          "source": "            }"
+        },
+        "222": {
+          "kind": "executable",
+          "source": "            _ => Err(crate::Error::InvalidColumnType),"
+        },
+        "223": {
+          "kind": "syntax",
+          "source": "        }"
+        }
+      }
+    },
+    "src/local/statement.rs": {
+      "sha256": "0910b61aa941dc6cdcf3287a907e98a305d7e31a9dd16f0a36bef793695f82f0",
+      "added_lines": {
+        "259": {
+          "kind": "executable",
+          "source": "        let n = self.column_count();"
+        },
+        "260": {
+          "kind": "executable",
+          "source": "        let mut cols = Vec::with_capacity(n);"
+        },
+        "261": {
+          "kind": "executable",
+          "source": "        for i in 0..n {"
+        },
+        "262": {
+          "kind": "executable",
+          "source": "            let s = self.column_name(i);"
+        },
+        "263": {
+          "kind": "executable",
+          "source": "            if let Some(s) = s {"
+        },
+        "264": {
+          "kind": "executable",
+          "source": "                cols.push(s);"
+        },
+        "265": {
+          "kind": "syntax",
+          "source": "            }"
+        },
+        "266": {
+          "kind": "syntax",
+          "source": "        }"
+        },
+        "267": {
+          "kind": "executable",
+          "source": "        cols"
+        },
+        "342": {
+          "kind": "declaration",
+          "source": "    pub fn columns(&self) -> Vec<Column<'_>> {"
+        }
+      }
+    },
+    "src/statement.rs": {
+      "sha256": "093234e94072e9d39a24e6af138e14240a58d87bf79d4774766bbbebd6aca54c",
+      "added_lines": {
+        "27": {
+          "kind": "declaration",
+          "source": "    fn columns(&self) -> Vec<Column<'_>>;"
+        },
+        "106": {
+          "kind": "declaration",
+          "source": "    pub fn columns(&self) -> Vec<Column<'_>> {"
+        }
+      }
+    }
+  }
+}

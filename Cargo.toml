@@ -192,6 +192,11 @@ name = "transaction"
 path = "examples/transaction.rs"
 
 [[test]]
+name = "row_text_regression"
+path = "tests/row_text_regression.rs"
+required-features = ["core"]
+
+[[test]]
 name = "encryption"
 path = "tests/encryption.rs"
 

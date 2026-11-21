@@ -60,10 +60,16 @@ impl Rows {
     }
 
     pub fn column_name(&self, idx: i32) -> Option<&str> {
+        if idx < 0 || idx >= self.stmt.inner.column_count() {
+            return None;
+        }
         self.stmt.inner.column_name(idx)
     }
 
     pub fn column_type(&self, idx: i32) -> Result<ValueType> {
+        if idx < 0 || idx >= self.stmt.inner.column_count() {
+            return Err(Error::InvalidColumnIndex);
+        }
         let val = self.stmt.inner.column_type(idx);
         match val {
             libsql_sys::ffi::SQLITE_INTEGER => Ok(ValueType::Integer),
@@ -122,16 +128,28 @@ impl Row {
     where
         T: FromValue,
     {
+        self.check_column_index(idx)?;
         let val = self.stmt.inner.column_value(idx);
         T::from_sql(val)
     }
 
     pub fn get_value(&self, idx: i32) -> Result<Value> {
-        let val = self.stmt.inner.column_value(idx);
-        <crate::Value as FromValue>::from_sql(val)
+        // Copy the length-aware view before another SQLite operation can change it.
+        match self.get_ref(idx)? {
+            ValueRef::Null => Ok(Value::Null),
+            ValueRef::Integer(n) => Ok(Value::Integer(n)),
+            ValueRef::Real(n) => Ok(Value::Real(n)),
+            ValueRef::Text(bytes) => std::str::from_utf8(bytes)
+                .map(|text| Value::Text(text.to_owned()))
+                .map_err(|_| Error::InvalidColumnType),
+            ValueRef::Blob(bytes) => Ok(Value::Blob(bytes.to_vec())),
+        }
     }
 
     pub fn column_type(&self, idx: i32) -> Result<ValueType> {
+        if idx < 0 || idx >= self.stmt.inner.column_count() {
+            return Err(Error::InvalidColumnIndex);
+        }
         let val = self.stmt.inner.column_type(idx);
         match val {
             libsql_sys::ffi::SQLITE_INTEGER => Ok(ValueType::Integer),
@@ -144,10 +162,21 @@ impl Row {
     }
 
     pub fn column_name(&self, idx: i32) -> Option<&str> {
+        if idx < 0 || idx >= self.stmt.inner.column_count() {
+            return None;
+        }
         self.stmt.inner.column_name(idx)
     }
 
+    fn check_column_index(&self, idx: i32) -> Result<()> {
+        if idx < 0 || idx >= self.stmt.inner.column_count() {
+            return Err(Error::InvalidColumnIndex);
+        }
+        Ok(())
+    }
+
     pub fn get_ref(&self, idx: i32) -> Result<ValueRef<'_>> {
+        self.check_column_index(idx)?;
         Ok(crate::local::Statement::value_ref(
             &self.stmt.inner,
             idx as usize,
@@ -392,5 +421,28 @@ where
             .next()
             .transpose()
             .map(|row_result| row_result.and_then(map))
+    }
+}
+#[cfg(test)]
+mod row_index_regression {
+    use crate::{database::OpenFlags, local::Database, Error};
+
+    #[test]
+    fn local_generic_get_checks_bounds_before_value_access() {
+        let database = Database::open(":memory:", OpenFlags::default()).unwrap();
+        let connection = database.connect().unwrap();
+        let rows = connection
+            .query("SELECT 7", crate::params::Params::None)
+            .unwrap()
+            .unwrap();
+        let row = rows.next().unwrap().unwrap();
+        assert_eq!(row.get::<i64>(0).unwrap(), 7);
+        assert_eq!(row.stmt.column_names(), vec!["7"]);
+        for index in [-1, 1, i32::MAX] {
+            assert!(matches!(
+                row.get::<i64>(index),
+                Err(Error::InvalidColumnIndex)
+            ));
+        }
     }
 }

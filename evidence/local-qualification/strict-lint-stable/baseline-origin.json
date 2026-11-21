@@ -1,0 +1,316 @@
+{
+  "status": "actual strict lint failure; not waived",
+  "guard": "de6f7035-5a3d-4178-98e5-546bd03b4e8d",
+  "baseline": "243281163e4a39303322385d5f9537736277026e",
+  "diagnostics": [
+    {
+      "diagnostic": "doc list item without indentation",
+      "path": "src/lib.rs",
+      "line": 86,
+      "baseline_line": 86,
+      "unchanged_line": true,
+      "source": "//! embedded replica features.",
+      "baseline_file_sha256": "85acb61fc42aa9860fae2109f17c23595b89e8ae0fcfda39b41aea853eb5f3c5"
+    },
+    {
+      "diagnostic": "doc list item without indentation",
+      "path": "src/lib.rs",
+      "line": 88,
+      "baseline_line": 88,
+      "unchanged_line": true,
+      "source": "//! that will allow you to sync you remote database locally.",
+      "baseline_file_sha256": "85acb61fc42aa9860fae2109f17c23595b89e8ae0fcfda39b41aea853eb5f3c5"
+    },
+    {
+      "diagnostic": "doc list item without indentation",
+      "path": "src/lib.rs",
+      "line": 90,
+      "baseline_line": 90,
+      "unchanged_line": true,
+      "source": "//! a remote database.",
+      "baseline_file_sha256": "85acb61fc42aa9860fae2109f17c23595b89e8ae0fcfda39b41aea853eb5f3c5"
+    },
+    {
+      "diagnostic": "doc list item without indentation",
+      "path": "src/lib.rs",
+      "line": 92,
+      "baseline_line": 92,
+      "unchanged_line": true,
+      "source": "//! your own connector for any of the features that require HTTP.",
+      "baseline_file_sha256": "85acb61fc42aa9860fae2109f17c23595b89e8ae0fcfda39b41aea853eb5f3c5"
+    },
+    {
+      "diagnostic": "usage of an `Arc` that is not `Send` and `Sync`",
+      "path": "src/local/connection.rs",
+      "line": 78,
+      "baseline_line": 78,
+      "unchanged_line": true,
+      "source": "            authorizer: Arc::new(RwLock::new(None)),",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "usage of an `Arc` that is not `Send` and `Sync`",
+      "path": "src/local/connection.rs",
+      "line": 103,
+      "baseline_line": 103,
+      "unchanged_line": true,
+      "source": "            authorizer: Arc::new(RwLock::new(None)),",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "useless use of `format!`",
+      "path": "src/local/connection.rs",
+      "line": 456,
+      "baseline_line": 456,
+      "unchanged_line": true,
+      "source": "                return Err(crate::Error::Misuse(format!(",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "useless use of `format!`",
+      "path": "src/local/connection.rs",
+      "line": 611,
+      "baseline_line": 611,
+      "unchanged_line": true,
+      "source": "                format!(\"wal_disable_checkpoint failed\"),",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "useless use of `format!`",
+      "path": "src/local/connection.rs",
+      "line": 621,
+      "baseline_line": 621,
+      "unchanged_line": true,
+      "source": "                format!(\"wal_insert_begin failed\"),",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "useless use of `format!`",
+      "path": "src/local/connection.rs",
+      "line": 632,
+      "baseline_line": 632,
+      "unchanged_line": true,
+      "source": "                format!(\"wal_insert_end failed\"),",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "manually constructing a nul-terminated string",
+      "path": "src/local/connection.rs",
+      "line": 675,
+      "baseline_line": 675,
+      "unchanged_line": true,
+      "source": "                \"main\\0\".as_ptr() as *const _,",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "used `unwrap()` on `Err` value",
+      "path": "src/local/connection.rs",
+      "line": 782,
+      "baseline_line": 782,
+      "unchanged_line": true,
+      "source": "                Err(err).unwrap()",
+      "baseline_file_sha256": "d6fed5e4f7ea3c76c21e3b1a2a9e659ddb4900e2aff7ca42708eb9673b30ab86"
+    },
+    {
+      "diagnostic": "using `clone` on type `ValueType` which implements the `Copy` trait",
+      "path": "src/local/rows.rs",
+      "line": 260,
+      "baseline_line": 231,
+      "unchanged_line": true,
+      "source": "            .map(|(_, vt)| vt.clone())",
+      "baseline_file_sha256": "bd66fc7fc496a23f9be1d66c99a30a413fbcfe23cf3f201c455238088c38db06"
+    },
+    {
+      "diagnostic": "using `clone` on type `ValueType` which implements the `Copy` trait",
+      "path": "src/local/rows.rs",
+      "line": 303,
+      "baseline_line": 274,
+      "unchanged_line": true,
+      "source": "            .map(|(_, vt)| vt.clone())",
+      "baseline_file_sha256": "bd66fc7fc496a23f9be1d66c99a30a413fbcfe23cf3f201c455238088c38db06"
+    },
+    {
+      "diagnostic": "casting to the same type is unnecessary (`usize` -> `usize`)",
+      "path": "src/local/statement.rs",
+      "line": 331,
+      "baseline_line": 331,
+      "unchanged_line": true,
+      "source": "                return Ok(i as usize);",
+      "baseline_file_sha256": "8ae4311682d291869310f5d273662b4a368c55ee0fa57241882b5eb6ed38059e"
+    },
+    {
+      "diagnostic": "passing a unit value to a function",
+      "path": "src/local/impls.rs",
+      "line": 104,
+      "baseline_line": 104,
+      "unchanged_line": true,
+      "source": "        Ok(self.conn.add_update_hook(cb))",
+      "baseline_file_sha256": "7c1b29ebfae1eeb8d77860aa6cff19e76427a60d6a726b84fb4ee45b249e5a61"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 29,
+      "baseline_line": 29,
+      "unchanged_line": true,
+      "source": "///     by doing `(1, \"foo\")`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 31,
+      "baseline_line": 31,
+      "unchanged_line": true,
+      "source": "///     by doing `libsql::params![1, \"foo\"]`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 33,
+      "baseline_line": 33,
+      "unchanged_line": true,
+      "source": "///     supported by doing `[1, 2, 3]`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 64,
+      "baseline_line": 64,
+      "unchanged_line": true,
+      "source": "///     by doing `((\"key1\", 1), (\"key2\", \"foo\"))`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 66,
+      "baseline_line": 66,
+      "unchanged_line": true,
+      "source": "///     by doing `libsql::named_params![\"key1\": 1, \"key2\": \"foo\"]`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/params.rs",
+      "line": 68,
+      "baseline_line": 68,
+      "unchanged_line": true,
+      "source": "///     supported by doing `[(\"key1\", 1), (\"key2, 2), (\"key3\", 3)]`.",
+      "baseline_file_sha256": "f1ff5ead2894daf6cc0687f0400902003cb1d9f6abb7a58f62348807f3eeb3c3"
+    },
+    {
+      "diagnostic": "very complex type used. Consider factoring parts into `type` definitions",
+      "path": "src/connection.rs",
+      "line": 71,
+      "baseline_line": 71,
+      "unchanged_line": true,
+      "source": "    fn add_update_hook(&self, _cb: Box<dyn Fn(Op, &str, &str, i64) + Send + Sync>) -> Result<()> {",
+      "baseline_file_sha256": "c0d2521854ebb97c216871fd07d4faddc71175a5403ecfd84acdd8aa6eda8ec8"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 15,
+      "baseline_line": 15,
+      "unchanged_line": true,
+      "source": "///     it does no networking and does not connect to any remote database.",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 17,
+      "baseline_line": 17,
+      "unchanged_line": true,
+      "source": "///     to sync from the remote url and delegate writes to the remote primary.",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 19,
+      "baseline_line": 19,
+      "unchanged_line": true,
+      "source": "///     synced to a remote server.",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 21,
+      "baseline_line": 21,
+      "unchanged_line": true,
+      "source": "///     except you must use `Database::sync_frames` to sync with the remote. This version also",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 22,
+      "baseline_line": 22,
+      "unchanged_line": true,
+      "source": "///     includes the ability to delegate writes to a remote primary.",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database/builder.rs",
+      "line": 24,
+      "baseline_line": 24,
+      "unchanged_line": true,
+      "source": "///     instead run all queries on the remote database. This is essentially the pure HTTP api.",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "unsafe function's docs are missing a `# Safety` section",
+      "path": "src/database/builder.rs",
+      "line": 190,
+      "baseline_line": 190,
+      "unchanged_line": true,
+      "source": "        pub unsafe fn skip_safety_assert(mut self, skip: bool) -> Builder<Local> {",
+      "baseline_file_sha256": "016bef9b25c66bafbc51c28751d402f2e477d224a8fb34a2ea68ac1cc2e8b899"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database.rs",
+      "line": 563,
+      "baseline_line": 563,
+      "unchanged_line": true,
+      "source": "    ///     libsql C ffi and create a connection to the libsql database.",
+      "baseline_file_sha256": "4491e0e52b1d0e88662d633075d9a60f7144c7a2cb52c5b4f3df10a6d488a26b"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database.rs",
+      "line": 565,
+      "baseline_line": 565,
+      "unchanged_line": true,
+      "source": "    ///     lazily create a HTTP connection to the provided endpoint.",
+      "baseline_file_sha256": "4491e0e52b1d0e88662d633075d9a60f7144c7a2cb52c5b4f3df10a6d488a26b"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database.rs",
+      "line": 567,
+      "baseline_line": 567,
+      "unchanged_line": true,
+      "source": "    ///     handshake with the remote server and will attempt to replicate the remote database",
+      "baseline_file_sha256": "4491e0e52b1d0e88662d633075d9a60f7144c7a2cb52c5b4f3df10a6d488a26b"
+    },
+    {
+      "diagnostic": "doc list item overindented",
+      "path": "src/database.rs",
+      "line": 568,
+      "baseline_line": 568,
+      "unchanged_line": true,
+      "source": "    ///     locally.",
+      "baseline_file_sha256": "4491e0e52b1d0e88662d633075d9a60f7144c7a2cb52c5b4f3df10a6d488a26b"
+    }
+  ],
+  "all_diagnostic_lines_unchanged": true,
+  "count": 34,
+  "limit": "source origin mapping, not an executed pristine-baseline lint comparison"
+}

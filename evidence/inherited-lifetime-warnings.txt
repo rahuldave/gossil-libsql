@@ -1,0 +1,71 @@
+cargo test --locked --all-features --package gossil --test libsql_row_text
+   Compiling libsql v0.10.0 (/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql)
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> vendor/libsql/src/local/statement.rs:342:20
+    |
+342 |     pub fn columns(&self) -> Vec<Column> {
+    |                    ^^^^^         ^^^^^^ the same lifetime is hidden here
+    |                    |
+    |                    the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+342 |     pub fn columns(&self) -> Vec<Column<'_>> {
+    |                                        ++++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> vendor/libsql/src/local/impls.rs:163:16
+    |
+163 |     fn columns(&self) -> Vec<Column> {
+    |                ^^^^^         ^^^^^^ the same lifetime is hidden here
+    |                |
+    |                the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+163 |     fn columns(&self) -> Vec<Column<'_>> {
+    |                                    ++++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+  --> vendor/libsql/src/statement.rs:27:16
+   |
+27 |     fn columns(&self) -> Vec<Column>;
+   |                ^^^^^         ^^^^^^ the same lifetime is hidden here
+   |                |
+   |                the lifetime is elided here
+   |
+   = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+   |
+27 |     fn columns(&self) -> Vec<Column<'_>>;
+   |                                    ++++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> vendor/libsql/src/statement.rs:106:20
+    |
+106 |     pub fn columns(&self) -> Vec<Column> {
+    |                    ^^^^^         ^^^^^^ the same lifetime is hidden here
+    |                    |
+    |                    the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+106 |     pub fn columns(&self) -> Vec<Column<'_>> {
+    |                                        ++++
+
+warning: `libsql` (lib) generated 4 warnings (run `cargo fix --lib -p libsql` to apply 4 suggestions)
+   Compiling gossil v0.4.0 (/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.68s
+     Running tests/libsql_row_text.rs (/tmp/gossil-gest-feature-runtime-20261120/cargo-target/debug/deps/libsql_row_text-448257eb7989964c)
+
+running 4 tests
+test public_row_and_rows_reject_out_of_range_indices_and_recover ... ok
+test public_row_keeps_storage_types_and_rejects_nontext_strings ... ok
+test public_row_preserves_all_text_bytes_and_owned_lifetime ... ok
+test public_row_rejects_invalid_utf8_without_panic_and_recovers ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s

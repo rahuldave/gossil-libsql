@@ -1,0 +1,12 @@
+{
+  "status": "independent Sol6.1 source/test/prose review complete; final qualified hashes in qualification/summary.json",
+  "findings_closed": [
+    "get_str-specific documentation",
+    "positive DA required for every added executable line",
+    "Cargo provider path bound to verified provider",
+    "test-only local Params convention",
+    "fresh profiles required separately for both test binaries",
+    "unsupported nested comments and Unicode tokens fail closed"
+  ],
+  "baseline": "243281163e4a39303322385d5f9537736277026e"
+}

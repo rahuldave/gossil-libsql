@@ -1,0 +1,41 @@
+{
+  "name": "companion-frozen-lint-1100",
+  "cwd": "/Users/rahul/Projects/gossil-libsql",
+  "argv": [
+    "just",
+    "lint"
+  ],
+  "returncode": 0,
+  "stop": null,
+  "elapsed": 7.294961167033762,
+  "minimum_free_bytes": 8557592576,
+  "owned_pids": [
+    94181,
+    94242,
+    94248,
+    94294,
+    94375,
+    94381,
+    94382,
+    94463,
+    94469,
+    94475,
+    94477,
+    94484,
+    94501,
+    94503,
+    94504,
+    94505,
+    94524,
+    94525,
+    94526,
+    94567,
+    94570,
+    94571,
+    94572
+  ],
+  "owned_groups": [
+    94181
+  ],
+  "live_owned_pids": []
+}

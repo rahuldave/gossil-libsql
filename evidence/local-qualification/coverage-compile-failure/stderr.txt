@@ -1,0 +1,182 @@
+mkdir -p target
+jlog run cargo llvm-cov test --config 'patch.crates-io.libsql-ffi.path="/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi"' --locked --no-default-features --features core --lib --test row_text_regression --lcov --output-path target/row-fix.lcov
+info: cargo-llvm-cov currently setting cfg(coverage); you can opt-out it by passing --no-cfg-coverage
+warning: process didn't exit successfully: `/Users/rahul/.rustup/toolchains/stable-aarch64-apple-darwin/bin/cargo clean --package libsql --color never --manifest-path /Users/rahul/Projects/gossil-libsql/Cargo.toml --target-dir /tmp/gossil-gest-feature-runtime-20261120/llvm-target --locked` (exit status: 101)
+--- stderr
+error: cannot update the lock file /Users/rahul/Projects/gossil-libsql/Cargo.lock because --locked was passed to prevent this
+help: to generate the lock file without accessing the network, remove the --locked flag and use --offline instead.
+
+   Compiling proc-macro2 v1.0.86
+   Compiling unicode-ident v1.0.12
+   Compiling quote v1.0.36
+   Compiling syn v2.0.87
+   Compiling cfg-if v1.0.4
+   Compiling libc v0.2.189
+   Compiling autocfg v1.3.0
+   Compiling shlex v2.0.1
+   Compiling serde_core v1.0.228
+   Compiling find-msvc-tools v0.1.10
+   Compiling cc v1.4.2
+   Compiling serde v1.0.228
+   Compiling pin-project-lite v0.2.14
+   Compiling memchr v2.7.4
+   Compiling serde_derive v1.0.228
+   Compiling once_cell v1.19.0
+   Compiling bitflags v2.6.0
+   Compiling lazy_static v1.5.0
+   Compiling glob v0.3.1
+   Compiling futures-core v0.3.31
+   Compiling clang-sys v1.8.1
+   Compiling lock_api v0.4.12
+   Compiling smallvec v1.13.2
+   Compiling prettyplease v0.2.20
+   Compiling rustix v0.38.34
+   Compiling parking_lot_core v0.9.10
+   Compiling errno v0.3.9
+   Compiling slab v0.4.9
+   Compiling scopeguard v1.2.0
+   Compiling crossbeam-utils v0.8.20
+   Compiling regex-syntax v0.8.4
+   Compiling minimal-lexical v0.2.1
+   Compiling nom v7.1.3
+   Compiling regex-automata v0.4.7
+   Compiling bytes v1.8.0
+   Compiling libloading v0.8.4
+   Compiling bindgen v0.66.1
+   Compiling either v1.13.0
+   Compiling futures-sink v0.3.31
+   Compiling home v0.5.9
+   Compiling which v4.4.2
+   Compiling futures-channel v0.3.31
+   Compiling parking_lot v0.12.3
+   Compiling regex v1.10.5
+   Compiling cexpr v0.6.0
+   Compiling getrandom v0.2.15
+   Compiling zerocopy-derive v0.7.35
+   Compiling futures-macro v0.3.31
+   Compiling rustc-hash v1.1.0
+   Compiling lazycell v1.3.0
+   Compiling peeking_take_while v0.1.2
+   Compiling futures-task v0.3.31
+   Compiling byteorder v1.5.0
+   Compiling pin-utils v0.1.0
+   Compiling log v0.4.22
+   Compiling shlex v1.3.0
+   Compiling itoa v1.0.11
+   Compiling futures-io v0.3.31
+   Compiling futures-util v0.3.31
+   Compiling zerocopy v0.7.35
+   Compiling crossbeam-epoch v0.9.18
+   Compiling tracing-core v0.1.32
+   Compiling cmake v0.1.58
+   Compiling num-traits v0.2.19
+   Compiling num_cpus v1.16.0
+   Compiling signal-hook-registry v1.4.2
+   Compiling socket2 v0.5.7
+   Compiling mio v0.8.11
+   Compiling tokio-macros v2.3.0
+   Compiling serde_json v1.0.145
+   Compiling version_check v0.9.4
+   Compiling rayon-core v1.12.1
+   Compiling ahash v0.8.11
+   Compiling tokio v1.38.0
+   Compiling libsql-ffi v0.10.0 (/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi)
+   Compiling crossbeam-deque v0.8.5
+   Compiling futures-executor v0.3.30
+   Compiling half v2.4.1
+   Compiling anstyle v1.0.7
+   Compiling plotters-backend v0.3.6
+   Compiling ciborium-io v0.2.2
+   Compiling thiserror v1.0.61
+   Compiling ryu v1.0.18
+   Compiling clap_lex v0.7.1
+   Compiling uuid v1.10.0
+   Compiling cpp_demangle v0.4.3
+   Compiling debugid v0.8.0
+   Compiling clap_builder v4.5.9
+   Compiling ciborium-ll v0.2.2
+   Compiling plotters-svg v0.3.6
+   Compiling futures v0.3.30
+   Compiling itertools v0.10.5
+   Compiling backtrace v0.3.73
+   Compiling findshlibs v0.10.2
+   Compiling memmap2 v0.9.4
+   Compiling is-terminal v0.4.12
+   Compiling thiserror-impl v1.0.61
+   Compiling equator-macro v0.2.1
+   Compiling tracing-attributes v0.1.27
+   Compiling arrayvec v0.7.4
+   Compiling hashbrown v0.14.5
+   Compiling cast v0.3.0
+   Compiling bytemuck v1.16.1
+   Compiling gimli v0.29.0
+   Compiling same-file v1.0.6
+   Compiling rustc-demangle v0.1.24
+   Compiling equivalent v1.0.1
+   Compiling stable_deref_trait v1.2.0
+   Compiling symbolic-demangle v12.9.2
+   Compiling adler v1.0.2
+   Compiling miniz_oxide v0.7.4
+   Compiling symbolic-common v12.9.2
+   Compiling indexmap v2.2.6
+   Compiling walkdir v2.5.0
+   Compiling addr2line v0.22.0
+   Compiling rgb v0.8.44
+   Compiling criterion-plot v0.5.0
+   Compiling num-format v0.4.4
+   Compiling tracing v0.1.40
+   Compiling equator v0.2.2
+   Compiling plotters v0.3.6
+   Compiling rayon v1.10.0
+   Compiling ciborium v0.2.2
+   Compiling tinytemplate v1.2.1
+   Compiling clap v4.5.9
+   Compiling rand_core v0.6.4
+   Compiling quick-xml v0.26.0
+   Compiling object v0.36.1
+   Compiling async-stream-impl v0.3.5
+   Compiling oorandom v11.1.4
+   Compiling ppv-lite86 v0.2.17
+   Compiling pprof v0.14.0
+   Compiling fastrand v2.1.0
+   Compiling bitflags v1.3.2
+   Compiling anes v0.1.6
+   Compiling str_stack v0.1.0
+   Compiling overload v0.1.1
+   Compiling nu-ansi-term v0.46.0
+   Compiling inferno v0.11.19
+   Compiling criterion v0.5.1
+   Compiling nix v0.26.4
+   Compiling tempfile v3.10.1
+   Compiling rand_chacha v0.3.1
+   Compiling async-stream v0.3.5
+   Compiling libsql-sys v0.10.0
+   Compiling aligned-vec v0.6.1
+   Compiling tracing-log v0.2.0
+   Compiling tokio-stream v0.1.15
+   Compiling sharded-slab v0.1.7
+   Compiling thread_local v1.1.8
+   Compiling async-trait v0.1.89
+   Compiling tracing-subscriber v0.3.18
+   Compiling tokio-test v0.4.4
+   Compiling rand v0.8.5
+   Compiling libsql v0.10.0 (/Users/rahul/Projects/gossil-libsql)
+error[E0277]: the trait bound `Params: From<()>` is not satisfied
+   --> src/local/rows.rs:434:31
+    |
+434 |         let rows = connection.query("SELECT 7", ()).unwrap().unwrap();
+    |                               ^^^^^ unsatisfied trait bound
+    |
+help: the trait `From<()>` is not implemented for `Params`
+   --> src/params.rs:98:1
+    |
+ 98 | pub enum Params {
+    | ^^^^^^^^^^^^^^^
+    = note: required for `()` to implement `Into<Params>`
+    = note: required for `Params` to implement `TryFrom<()>`
+
+For more information about this error, try `rustc --explain E0277`.
+error: process didn't exit successfully: `/Users/rahul/.rustup/toolchains/stable-aarch64-apple-darwin/bin/rustc --crate-name libsql --edition=2021 src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --emit=dep-info,link -C embed-bitcode=no -C debuginfo=2 -C split-debuginfo=unpacked --test --cfg 'feature="core"' --cfg 'feature="libsql-sys"' --check-cfg 'cfg(docsrs,test)' --check-cfg 'cfg(feature, values("cloudflare", "core", "default", "encryption", "hrana", "libsql-sys", "parser", "remote", "replication", "serde", "stream", "sync", "tls", "wasm"))' -C metadata=cc52165601632e73 -C extra-filename=-915a62b2bf5a6d1f --out-dir /tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps -L dependency=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps --extern async_trait=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libasync_trait-2f3fea772954348a.dylib --extern bitflags=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libbitflags-0b43d4db3ef84fb2.rlib --extern bytes=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libbytes-1adbe2cfdcfe85e8.rlib --extern criterion=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libcriterion-ae76fca823c6c90f.rlib --extern futures=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libfutures-4127acb0cf75951f.rlib --extern libsql_sys=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/liblibsql_sys-27639666782712f3.rlib --extern parking_lot=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libparking_lot-1c5b71b0385391c3.rlib --extern pprof=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libpprof-7ba9cff882f06a36.rlib --extern rand=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/librand-42b512eb03934024.rlib --extern tempfile=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libtempfile-0c53a9ba427922f6.rlib --extern thiserror=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libthiserror-ec8c2c799b86b465.rlib --extern tokio=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libtokio-d815059477c3e4d9.rlib --extern tokio_test=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libtokio_test-9ef7b23a5c656349.rlib --extern tracing=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libtracing-332b50be0b65bc4f.rlib --extern tracing_subscriber=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/deps/libtracing_subscriber-d0691537edfff84e.rlib -L native=/tmp/gossil-gest-feature-runtime-20261120/llvm-target/debug/build/libsql-ffi-4fac78ad2957908a/out -C instrument-coverage --cfg=coverage` (exit status: 1)
+error: could not compile `libsql` (lib test) due to 1 previous error
+error: process didn't exit successfully: `/Users/rahul/.rustup/toolchains/stable-aarch64-apple-darwin/bin/cargo test --manifest-path /Users/rahul/Projects/gossil-libsql/Cargo.toml --target-dir /tmp/gossil-gest-feature-runtime-20261120/llvm-target --config 'patch.crates-io.libsql-ffi.path="/Users/rahul/Projects/gossil.worktrees/gest-zpxtnvsq-libsql-text/vendor/libsql-ffi"' --locked --no-default-features --features core --lib --test row_text_regression` (exit status: 101)
+error: Recipe `test` failed on line 44 with exit code 101
